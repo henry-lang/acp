@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Check if commit message is provided as an argument
+if [ -z "$1" ]; then
+  echo "Error: Commit message is required"
+  exit 1
+fi
+
+# Add all changes
+git add .
+
+# Commit changes with the provided message
+git commit -m "$1"
+
+# Push changes to the remote repository
+git push origin
+
+# Success message
+echo "Changes have been successfully pushed!"
