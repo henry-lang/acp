@@ -2,15 +2,17 @@
 
 # Check if commit message is provided as an argument
 if [ -z "$1" ]; then
-  echo "Error: Commit message is required"
-  exit 1
+  # Use today's date as the commit message if none is provided
+  commit_message=$(date +"%Y-%m-%d %H:%M:%S")
+else
+  commit_message="$1"
 fi
 
 # Add all changes
 git add .
 
 # Commit changes with the provided message
-git commit -m "$1"
+git commit -m "$commit_message"
 
 # Push changes to the remote repository
 git push origin
